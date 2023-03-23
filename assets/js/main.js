@@ -45,22 +45,41 @@ const images = [
 ];
 
 // seleziono elemento ospitante
-const imagesEl = document.querySelector(".images")
-/* const imgEl = '<img src="./assets/img/01.webp">'
-imagesEl.innerHTML= (imgEl) */
+let imagesEl = document.querySelector(".images")
+const prev = document.querySelector('.prev');
+const next = document.querySelector('.next');
+const totalImages = images.length;
+let currentImageIndex = 0;
 
-images.forEach(img => {
-    console.log(img.image)
-    const imgEl = `<div class="card" style="width: 18rem;">
-                   <img src="./assets/${img.image}" class="card-img-top" alt="">
-                   <div class="card-body">
-                   <h3>${img.title}</h3>
-                   <p class="card-text">${img.text}</p>
-                   </div>
-                   </div>`
-    imagesEl.innerHTML = (imgEl)
-});
+// Funzione per visualizzare l'immagine corrente e la sua descrizione
+function showCurrentImage() {
+    const currentImage = images[currentImageIndex];
+    const cardEl = `<div class="card" style="width: 18rem;">
+                <img src="./assets/${currentImage.image}" class="card-img-top" alt="">
+                <div class="card-body">
+                <h3>${currentImage.title}</h3>
+                <p class="card-text">${currentImage.text}</p>
+                </div>
+                </div>`
+    imagesEl.insertAdjacentHTML('beforeend', cardEl)
+}
+
+// Aggiunta dei listener per i pulsanti
+prev.addEventListener('click', prevImage);
+next.addEventListener('click', nextImage);
+
+// Funzione per passare all'immagine successiva
+function nextImage() {
+    currentImageIndex = (currentImageIndex + 1)
+    showCurrentImage()
+}
+
+// Funzione per passare all'immagine precedente
+function prevImage() {
+    currentImageIndex = (currentImageIndex - 1)
+    showCurrentImage();
+}
 
 
-
-
+// Visualizzazione dell'immagine corrente all'avvio dello script
+showCurrentImage();

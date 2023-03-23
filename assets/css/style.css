@@ -2,11 +2,25 @@
  margin:0;
  padding:0;
  box-sizing:border-box;
- border: 1px solid ;
+ /* border: 1px solid ; */
 }
 
 img{
     max-width: 100%;
-    width: 300px;
+    width: 500px;
+    height: 200px;
     
+}
+
+.next{
+    z-index: 3;
+    position: absolute;
+    top: 10.5rem;
+    right:1rem;
+}
+.prev{
+    z-index: 3;
+    position: absolute;
+    top: 10.5rem;
+    left:1rem;
 }
