@@ -123,7 +123,7 @@ nextEl.addEventListener('click', function () {
   currentSlide.classList.remove("active")
 
   // pongo condizioni per incremento valore
-  if (activeImage == 4) {
+  if (activeImage == i-1) {
     activeImage = 0
   } else { activeImage++ }
 
@@ -149,7 +149,7 @@ prevEl.addEventListener('click', function () {
 
   // pongo condizioni per decremento valore
   if (activeImage == 0) {
-    activeImage = 4
+    activeImage = i-1
   } else { activeImage-- }
 
   // seleziono la prossima immagine
