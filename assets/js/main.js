@@ -91,11 +91,10 @@ const imagesEl = document.querySelector(".images")
 
 // seleziono l' immagine attiva
 let activeImage = 0
-let i = 0
 
 // ciclo le immagini e aggiungo un' elemento al DOM
-images.forEach(card => {
-  const imgEl = `<div class="slide ${i === activeImage ? "active" : ""} position-relative">
+images.forEach( (card, index) => {
+  const imgEl = `<div class="slide ${index === activeImage ? "active" : ""} position-relative">
                    <img src="./assets/${card.image}" class="card-img-top" alt="">
                    <span class="position-absolute w-100 h-25 start-0 bottom-0 text-white b_g p-2">
                       <h3>${card.title}</h3>
@@ -103,9 +102,6 @@ images.forEach(card => {
                    </span>
                  </div>`
   imagesEl.insertAdjacentHTML('beforeend', imgEl)
-  i++
-  console.log(imgEl)
-  console.log(i)
 })
 
 
@@ -123,7 +119,7 @@ nextEl.addEventListener('click', function () {
   currentSlide.classList.remove("active")
 
   // pongo condizioni per incremento valore
-  if (activeImage == i-1) {
+  if (activeImage == images.length - 1) {
     activeImage = 0
   } else { activeImage++ }
 
@@ -149,7 +145,7 @@ prevEl.addEventListener('click', function () {
 
   // pongo condizioni per decremento valore
   if (activeImage == 0) {
-    activeImage = i-1
+    activeImage = images.length - 1
   } else { activeImage-- }
 
   // seleziono la prossima immagine
